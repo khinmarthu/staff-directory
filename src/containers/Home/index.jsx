@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Button, AutoComplete, Typography } from "antd";
-import { isEqual, uniq, without } from "lodash";
+import { isEqual, uniq, without, map } from "lodash";
 import { Wrapper } from '../styled';
 
 const { Title } = Typography;
@@ -96,7 +96,7 @@ const Home = props => {
         <form onSubmit={handleSearchEmployee}>
           <SearchInput
             allowClear
-            dataSource={historyList.map(displayHistoryList)}
+            dataSource={map(historyList, displayHistoryList)}
             style={{ width: 400 }}
             onSelect={value => setEmployeeName(value)}
             onChange={value => setEmployeeName(value)}
