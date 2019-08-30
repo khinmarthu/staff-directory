@@ -41,9 +41,9 @@ const Overview = props => {
 
     if (curSubordinates) {
       const curSubordinatesPromises = map(curSubordinates, (curSubordinate) => getResult(curSubordinate));
-      await Promise.all(curSubordinatesPromises).then(function (curSubordinateResult) {
-        curEmployeeNameResult = Object.assign({}, curEmployeeNameResult, {children: curSubordinateResult});
-      });
+      const curSubordinateResult = await Promise.all(curSubordinatesPromises);
+      
+      curEmployeeNameResult = Object.assign({}, curEmployeeNameResult, {children: curSubordinateResult});
     }
     return curEmployeeNameResult;
   }, []); 
